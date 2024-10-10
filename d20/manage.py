@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import d20.settings as settings
 
 
 def main():
@@ -19,4 +20,6 @@ def main():
 
 
 if __name__ == '__main__':
+    settings.DEBUG = True
+    settings.ALLOWED_HOSTS = ['*']
     main()
