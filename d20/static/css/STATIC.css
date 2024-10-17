@@ -2,8 +2,16 @@
     --dg-color: #292121;
     --bg-navbar-color: rgba(66, 38, 38, 0.63);
 
+    --dg-form: rgba(39, 7, 7, 0.89);
+    --bg-button-access: rgb(30, 143, 4);
+    --bg-button-access-hover: rgb(47, 255, 0);
+
+    --linck-color-form: rgba(105, 232, 218, 0.89);
+    --linck-color-hover-form: rgba(213, 227, 225, 0.89);
+
     --text-color: white;
     --hover-text-color: rgba(57, 198, 24, 0.82);
+    --hover-text-color-access: #0b0000;
     --text-corol-attention: #f3cc30;
 
     --default-font-size: 1.3vw;
@@ -11,4 +19,7 @@
 
     --size-img-on-header: 3vw;
     --border-radius-img-on-header: 50px;
+
+    --scale-min: 0.9;
+    --scale-max: 1.1;
 }

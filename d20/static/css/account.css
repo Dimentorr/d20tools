@@ -1,0 +1,108 @@
+.log_block {
+    display: grid;
+    height: 25vh;
+    grid-template-rows: 10vh auto auto 5vh 2vh;
+    margin-top: 200px;
+    border-radius: 15px;
+    justify-items: center;
+    align-items: center;
+    width: 30vw;
+    background-color: var(--dg-form);
+}
+
+
+.reg_block {
+    display: grid;
+    height: 30vh;
+    grid-template-rows: 5vh 5vh 5vh 5vh 5vh 5vh;
+    margin-top: 200px;
+    border-radius: 15px;
+    justify-items: center;
+    align-items: center;
+    width: 30vw;
+    background-color: var(--dg-form);
+}
+.block_name {
+    grid-row-start: 1;
+}
+.username {
+    grid-row-start: 2;
+    & input {
+        border-radius: 15px;
+        border: none;
+        height: 2.5vh;
+        text-align: center;
+        width: 15vw;
+        font-size: var(--default-font-size);
+    }
+}
+.email {
+    grid-row-start: 3;
+    & input {
+        border-radius: 15px;
+        border: none;
+        height: 2.5vh;
+        text-align: center;
+        width: 15vw;
+        font-size: var(--default-font-size);
+    }
+}
+.password1 {
+    grid-row-start: 4;
+    & input {
+        border-radius: 15px;
+        border: none;
+        height: 2.5vh;
+        text-align: center;
+        width: 15vw;
+        font-size: var(--default-font-size);
+    }
+}
+.password2 {
+    grid-row-start: 5;
+    & input {
+        border-radius: 15px;
+        border: none;
+        height: 2.5vh;
+        text-align: center;
+        width: 15vw;
+        font-size: var(--default-font-size);
+    }
+}
+[class^="button_"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10vw;
+    & button {
+        height: 2.3vh;
+        border: none;
+        border-radius: 25px;
+        font-size: var(--default-font-size);
+        background-color: var(--bg-button-access);
+        color: var(--text-color);
+        &:hover {
+            background-color: var(--bg-button-access-hover);
+            scale: var(--scale-min);
+            color: var(--hover-text-color-access);
+            font: var(--default-font-size) - 0.2vw;
+        }
+    }
+}
+.button_log {
+    grid-row-start: 5;
+}
+.button_reg {
+    grid-row-start: 6;
+}
+
+.link_on_reg {
+    grid-row-start: 6;
+    & small a {
+        text-decoration: none;
+        color: var(--linck-color-form);
+    }
+    & small a:hover {
+        color: var(--linck-color-hover-form);
+    }
+}

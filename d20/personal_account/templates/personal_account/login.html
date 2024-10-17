@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block new_imports %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}"/>
+{% endblock %}
+
+{% block title %}
+Авторизация
+{% endblock %}
+
+{% block banner %}
+{% endblock %}
+
+{% block main_content %}
+    <form method="post" class="log_block">
+        {% csrf_token %}
+        <div class="block_name"><h1>Авторизация</h1></div>
+
+        <div class="username">
+            <input name="username" type="text" placeholder="Имя пользователя">
+        </div>
+        <div class="password1">
+            <input name="password" type="password" placeholder="Пароль">
+        </div>
+        <div class="button_log">
+            <button type="submit">Войти</button>
+        </div>
+        <div class="link_on_reg">
+            <small>
+                <a href="{% url 'register' %}">Нужен аккаунт?</a>
+            </small>
+        </div>
+        </form>
+
+{% endblock %}
+
+{% block right_content %}
+
+{% endblock %}

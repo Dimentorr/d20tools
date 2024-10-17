@@ -8,13 +8,29 @@ body {
 .content {
     display: grid;
     grid-template-columns: 18vw 62vw 20vw;
-    grid-template-rows: 15vh auto;
+    grid-template-rows: 10vh auto;
 }
 
+.left_content {
+    grid-column-start: 1;
+    grid-row-start: 2;
+}
+.center_content {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+.right_content {
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
 .header {
     grid-column: 1/4;
     grid-row: 1;
     display: grid;
+    margin-top: 1vw;
     width: 100%;
     grid-template-columns: 20vw auto 20vw;
     height: 7vh;
@@ -44,6 +60,7 @@ body {
         width: var(--size-img-on-header);
         height: var(--size-img-on-header);
         border-radius: var(--border-radius-img-on-header);
+        margin-right: 10px;
     }
     & p {
         font-size: var(--name-project-navbar);
@@ -64,13 +81,13 @@ body {
         margin: 0 10px 10px;
     }
     & li:hover {
-        scale: 1.1;
+        scale: var(--scale-max);
     }
     & li a:hover {
         color: var(--hover-text-color);
     }
     & li:active {
-        scale: 0.90;
+        scale: var(--scale-min);
     }
 }
 
@@ -91,9 +108,9 @@ body {
     color: var(--text-corol-attention);
     text-decoration: none;
     &:hover {
-        scale: 1.1;
+        scale: var(--scale-max);
     }
     &:active {
-        scale: 0.9;
+        scale: var(--scale-min);
     }
 }
