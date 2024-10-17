@@ -1,0 +1,14 @@
+:root {
+    --dg-color: #292121;
+    --bg-navbar-color: rgba(66, 38, 38, 0.63);
+
+    --text-color: white;
+    --hover-text-color: rgba(57, 198, 24, 0.82);
+    --text-corol-attention: #f3cc30;
+
+    --default-font-size: 1.3vw;
+    --name-project-navbar: 2.5vw;
+
+    --size-img-on-header: 3vw;
+    --border-radius-img-on-header: 50px;
+}
