@@ -24,6 +24,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['d20tools.ru']
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

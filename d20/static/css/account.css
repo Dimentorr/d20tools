@@ -81,18 +81,18 @@
     justify-content: center;
     width: 10vw;
     & button {
-        height: 2.9vh;
+        height: 3.5vh;
         min-width: var(--min-width-form-button);
+        width: 10vw;
         border: none;
         border-radius: 25px;
-        font-size: var(--default-font-size);
+        font-size: var(--font-size-for-form-button);
         background-color: var(--bg-button-access);
         color: var(--text-color);
         &:hover {
             background-color: var(--bg-button-access-hover);
             scale: var(--scale-min);
             color: var(--hover-text-color-access);
-            font: var(--default-font-size) - 0.2vw;
         }
     }
 }

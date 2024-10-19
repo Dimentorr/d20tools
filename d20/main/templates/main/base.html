@@ -26,7 +26,7 @@
                 <li><a class="a-button" href="{% url 'home' %}">Правила</a></li>
             </ul>
             <div class="account">
-                {% if user.is_authorize %}
+                {% if user.is_authenticate %}
                 <a href="{% url 'account' %}">
                     <img src="{% static 'img/void_account.jpg' %}">
                 </a>
