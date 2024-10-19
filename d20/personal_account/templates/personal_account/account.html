@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    Account
-</body>
-</html>
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block new_imports %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}"/>
+{% endblock %}
+
+{% block title %}
+Личный кабинет
+{% endblock %}
+
+{% block main_content %}
+<div class="person_account_list">
+    <div class="person_logo_place">
+        <div class="user_logo"><img src="{% static 'img/void_account.jpg' %}"></div>
+    </div>
+    <div class="user-name">
+        <b>{{ user.username }}</b>
+    </div>
+    <div class="user-id">
+        <small>ID: [NNNNNNNNNN]</small>
+    </div>
+    <div class="exit_account_icon">
+        <a href="{% url 'logout' %}"><img src="{%static 'img/logout.png'%}"></a>
+    </div>
+</div>
+{% endblock %}
+
+{% block right_content %}
+
+{% endblock %}

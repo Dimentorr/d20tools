@@ -11,7 +11,6 @@
     background-color: var(--dg-form);
 }
 
-
 .reg_block {
     display: grid;
     height: 30vh;
@@ -111,5 +110,81 @@
     }
     & small a:hover {
         color: var(--linck-color-hover-form);
+    }
+}
+
+.person_account_list {
+    min-height: 700px;
+    min-width: 250px;
+    width: 30vw;
+    background-color: var(--dg-form);
+    border-radius: 25px;
+
+    display: grid;
+    grid-template-columns: 35% 55% 10%;
+    grid-template-rows: 5% 5% 5% auto;
+}
+
+.person_logo_place {
+    /*start-row/start-column/end-row/end-column*/
+    grid-area: 1/1/4/3;
+    display: flex;
+    & .user_logo {
+        display: flex;
+        align-items: center;
+        & img {
+            margin-top: 1vw;
+            margin-left: 3vw;
+            border-radius: 100px;
+            min-width: 55px;
+            min-height: 55px;
+            width: 5vw;
+            height: 5vw;
+        }
+    }
+}
+.user-name {
+    display: flex;
+    align-items: center;
+    font-size: var(--default-font-size-account-username-on-form);
+    grid-row-start: 2;
+    grid-column-start: 2;
+}
+
+.user-id {
+    display: flex;
+    align-items: center;
+    font-size: var(--default-font-size-account-user-id-on-form);
+    grid-row-start: 3;
+    grid-column-start: 2;
+}
+
+.exit_account_icon {
+    /*start-row/start-column/end-row/end-column*/
+    grid-area: 1/3/1/3;
+    width: 3vw;
+    height: 3vw;
+    max-width: 45px;
+    max-height: 45px;
+    margin-top: 1vw;
+    margin-right: 2vw;
+    border-radius: 50px;
+    background-color: var(--bg-for-exit-account);
+    & img {
+        margin-top: 0.2vw;
+        margin-left: 0.4vw;
+        width: 2.5vw;
+        height: 2.5vw;
+        max-width: 35px;
+        max-height: 35px;
+        }
+}
+
+@media screen and (max-width: 900px) {
+    .user-name{
+        font-size: var(--default-font-size-account-username-on-form-befor-900);
+    }
+    .user-id {
+        font-size: var(--default-font-size-account-user-id-on-form-befor-900);
     }
 }
