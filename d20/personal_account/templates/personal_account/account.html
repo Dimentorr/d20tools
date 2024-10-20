@@ -14,14 +14,25 @@
     <div class="person_logo_place">
         <div class="user_logo"><img src="{% static 'img/void_account.jpg' %}"></div>
     </div>
-    <div class="user-name">
-        <b>{{ user.username }}</b>
-    </div>
-    <div class="user-id">
-        <small>ID: [NNNNNNNNNN]</small>
+
+    <div class="block_base_person_inform">
+        <div class="user_name">
+            <b>{{ user.username }}</b>
+        </div>
+        <div class="user_id">
+            <small>ID: [NNNNNNNNNN]</small>
+        </div>
     </div>
     <div class="exit_account_icon">
-        <a href="{% url 'logout' %}"><img src="{%static 'img/logout.png'%}"></a>
+        <a href="{% url 'logout' %}"><img src="{% static 'img/logout.png' %}"></a>
+    </div>
+    <div class="block_content_account">
+        <a href="">Мои компании</a>
+        <a href="">Мои персонажи</a>
+        <a href="">Друзья</a>
+        <a href="{% url 'account'%}">Личная информация<br>(В разработке)</a>
+        <a href="{% url 'account'%}">Тех.поддержка<br>(В разработке)</a>
+        <a href="{% url 'account'%}">Темы<br>(В разработке)</a>
     </div>
 </div>
 {% endblock %}

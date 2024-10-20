@@ -8,7 +8,7 @@ body {
 .content {
     display: grid;
     grid-template-columns: 18vw 62vw 20vw;
-    grid-template-rows: 10vh auto;
+    grid-template-rows: auto auto;
 }
 
 .left_content {
@@ -33,27 +33,30 @@ body {
     margin-top: 1vw;
     width: 100%;
     grid-template-columns: 20vw auto 20vw;
-    height: 7vh;
+    height: 20px;
 }
 
 .header_content {
     grid-column-start: 2;
 
-    background-color: var(--bg-navbar-color);
+    background-color: var(--bg-form-on-body-color);
     justify-content: space-between;
     border-radius: 20px;
-    height: 7vh;
-    display: flex;
+    /*height: 7vh;*/
+    /*display: flex;*/
+
+    display: grid;
+    grid-template-columns: 25% 65% 10%;
 }
 
 .header_logo {
     display: flex;
     align-items: center;
+    margin: auto;
     justify-content: center;
     flex-direction: row;
     height: 2rem;
-    margin-top: 2vh;
-    margin-left: 3vw;
+    padding-left: 2vw;
     text-decoration: none;
     color: var(--text-color);
     & img {
@@ -76,13 +79,11 @@ body {
     flex-wrap: wrap;
     list-style-type: none;
 
-    & li {
-        min-width: 10vw;
-    }
     & li a {
         color: var(--text-color);
         text-decoration: none;
-        margin: 0 10px 10px;
+        margin-left: 1vw;
+        font-size: var(--font-size-navbar);
     }
     & li:hover {
         scale: var(--scale-max);

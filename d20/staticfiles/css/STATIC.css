@@ -14,11 +14,23 @@
     --hover-text-color-access: #0b0000;
     --text-corol-attention: #f3cc30;
 
+    --bg-for-exit-account: rgba(242, 100, 25);
+
     --default-font-size: 1.3vw;
     --font-size-for-form-button: 1vw;
     --name-project-navbar: 2.5vw;
 
-    --size-img-on-header: 3vw;
+
+    --default-font-size-account-form: 15px;
+    --default-font-size-account-username-on-form: 25px;
+    --default-font-size-account-user-id-on-form: 10px;
+
+    --default-font-size-account-username-on-form-befor-900: 17px;
+    --default-font-size-account-user-id-on-form-befor-900: 7px;
+
+    --size-img-on-header: 5vw;
+    --size-img-on-header-after-1300: 4.5vw;
+    --size-img-on-header-after-1500: 3vw;
     --border-radius-img-on-header: 50px;
 
     --scale-min: 0.9;
