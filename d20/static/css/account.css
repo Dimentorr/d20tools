@@ -114,7 +114,6 @@
 }
 
 .person_account_list {
-    margin-top: 40px;
     min-height: 700px;
     min-width: 250px;
     width: 30vw;
@@ -202,7 +201,7 @@
         min-height: 100px;
         background-color: var(--bg-block-on-form);
         font-size: var(--default-font-size-account-form);
-        color: var(--text-color);
+        color: var(--text-color-on-block-on-form);
         text-decoration: none;
     }
 }

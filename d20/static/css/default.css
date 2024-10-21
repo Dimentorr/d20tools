@@ -5,6 +5,10 @@ body {
     font-size: var(--default-font-size);
 }
 
+.margin_top_for_all_center_content {
+    margin-top: 10vh;
+}
+
 .content {
     display: grid;
     grid-template-columns: 18vw 62vw 20vw;
@@ -78,6 +82,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     list-style-type: none;
+    z-index: 999;
 
     & li a {
         color: var(--text-color);
@@ -102,6 +107,7 @@ body {
     justify-content: center;
     max-width: 5vw;
     margin-right: 1vw;
+    z-index: 999;
     & a img {
         border-radius: var(--border-radius-img-on-header);
         width: var(--size-img-on-header);

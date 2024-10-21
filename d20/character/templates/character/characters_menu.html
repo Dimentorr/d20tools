@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block new_imports %}
+<link rel="stylesheet" href="{% static 'css/characters_menu.css' %}"/>
+{% endblock %}
+
+{% block title %}
+Персонажи
+{% endblock %}
+
+{% block main_content %}
+<div class="place_for-cart_characters">
+    {% for i in characters %}
+    <div class="cart_person_on_menu">
+        <div class="carat_information_character">
+            <b>{{ i.name }}</b>
+        </div>
+        <a class="cart_logo_character" href="{% url 'character_list' i.id %}">
+            {% if i.logo %}
+                <img src="../media/{{i.logo}}" alt="Изображение персонажа">
+            {% else %}
+                <img src="{% static 'img/void_account.jpg' %}" alt="Изображение персонажа">
+            {% endif %}
+        </a>
+    </div>
+    {% endfor%}
+    <div class="cart_person_on_menu">
+        <a class="cart_logo_character" href="{% url 'new_character' %}">
+            <img src="{% static 'img/add.svg' %}" alt="Изображение персонажа">
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block right_content %}
+
+{% endblock %}

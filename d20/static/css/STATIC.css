@@ -1,26 +1,29 @@
 :root {
-    --dg-color: #292121;
-    --bg-form-on-body-color: rgba(66, 38, 38, 0.63);
+    --dg-color: #171123;
+    --bg-form-on-body-color: #414770;
 
-    --dg-form: rgba(39, 7, 7, 0.89);
-    --bg-block-on-form: rgba(228, 144, 76, 0.27);
+    --dg-form: rgba(55, 34, 72, 0.42);
+    --bg-block-on-form: #5B85AA;
     --bg-button-access: rgb(30, 143, 4);
     --bg-button-access-hover: rgb(47, 255, 0);
 
     --linck-color-form: rgba(105, 232, 218, 0.89);
     --linck-color-hover-form: rgba(213, 227, 225, 0.89);
 
-    --text-color: white;
+    --text-color: #EB9A84;
+    --text-color-on-block-on-form: #230403;
     --hover-text-color: rgba(57, 198, 24, 0.82);
     --hover-text-color-access: #0b0000;
     --text-corol-attention: #f3cc30;
 
-    --bg-for-exit-account: rgba(242, 100, 25);
+    --bg-for-exit-account: #F46036;
 
     --default-font-size: 1.3vw;
     --font-size-navbar: 1.8vw;
     --font-size-for-form-button: 1vw;
     --name-project-navbar: 2.5vw;
+    --font-size-for-card-on-menu-character: 28px;
+    --font-size-for-card-on-menu-character-small: 20px;
 
 
     --default-font-size-account-form: 20px;

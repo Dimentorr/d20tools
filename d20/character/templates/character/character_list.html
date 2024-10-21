@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block new_imports %}
+<link rel="stylesheet" href="{% static 'css/characters_menu.css' %}"/>
+{% endblock %}
+
+{% block title %}
+{{ character.name }}
+{% endblock %}
+
+{% block main_content %}
+Лист персонажа - {{ character.name }}
+{% endblock %}
+
+{% block right_content %}
+
+{% endblock %}

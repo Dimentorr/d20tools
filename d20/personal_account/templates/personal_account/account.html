@@ -27,12 +27,12 @@
         <a href="{% url 'logout' %}"><img src="{% static 'img/logout.png' %}"></a>
     </div>
     <div class="block_content_account">
-        <a href="">Мои компании</a>
-        <a href="">Мои персонажи</a>
-        <a href="">Друзья</a>
-        <a href="{% url 'account'%}">Личная информация<br>(В разработке)</a>
-        <a href="{% url 'account'%}">Тех.поддержка<br>(В разработке)</a>
-        <a href="{% url 'account'%}">Темы<br>(В разработке)</a>
+        <a href=""><b>Мои компании<br>(В разработке)</b></a>
+        <a href="{% url 'character_menu' %}"><b>Мои персонажи</b></a>
+        <a href=""><b>Друзья<br>(В разработке)</b></a>
+        <a href="{% url 'account' %}"><b>Личная информация<br>(В разработке)</b></a>
+        <a href="{% url 'account' %}"><b>Тех.поддержка<br>(В разработке)</b></a>
+        <a href="{% url 'account' %}"><b>Темы<br>(В разработке)</b></a>
     </div>
 </div>
 {% endblock %}

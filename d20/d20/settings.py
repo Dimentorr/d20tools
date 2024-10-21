@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'masters_table',
-    'personal_account'
+    'personal_account',
+    'rules',
+    'character'
 ]
 
 MIDDLEWARE = [

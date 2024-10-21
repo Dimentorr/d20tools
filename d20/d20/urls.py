@@ -25,6 +25,7 @@ urlpatterns = [
     path('AdminVailet/', admin.site.urls),
     path('masterstable/', include('masters_table.urls')),
     path('account/', include('personal_account.urls')),
+    path('characters/', include('character.urls')),
     path('', include('main.urls')),
     path('favicon.ico', RedirectView.as_view(url=static('favicon.ico')))
 ]
