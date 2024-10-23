@@ -10,7 +10,6 @@
 {% endblock %}
 
 {% block main_content %}
-{% if user.is_authenticated %}
 <div class="place_for-cart_characters">
     {% for i in characters %}
     <div class="cart_person_on_menu">
@@ -32,10 +31,6 @@
         </a>
     </div>
 </div>
-{% else %}
-    <b>Для этого тебе нужно быть авторизованным!</b>
-{% endif %}
-{% endblock %}
 
 {% block right_content %}
 

@@ -22,7 +22,7 @@ def save_media(request, object_model):
         print('============================')
 
 
-@login_required
+@login_required(login_url='/account/login/')
 def character_menu(request):
     all_characters = Character.objects.filter(owner=request.user).all()
     context = {'characters': all_characters, }
@@ -30,7 +30,7 @@ def character_menu(request):
     return render(request, 'character/characters_menu.html', context)
 
 
-@login_required
+@login_required(login_url='/account/login/')
 def character_list(request, id):
     character = Character.objects.filter(owner=request.user).get(pk=id)
     context = {'character': character, }
@@ -39,7 +39,7 @@ def character_list(request, id):
     return render(request, 'character/character_list.html', context)
 
 
-@login_required
+@login_required(login_url='/account/login/')
 def new_character(request):
     errors = []
     context = {}
