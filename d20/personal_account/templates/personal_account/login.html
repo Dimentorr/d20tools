@@ -13,6 +13,10 @@
 {% endblock %}
 
 {% block main_content %}
+
+{% if form.non_field_errors %}
+    <b class="errors">Не верный логин или пароль!</b>
+{% endif %}
     <form method="post" class="log_block">
         {% csrf_token %}
         <div class="block_name"><h1>Авторизация</h1></div>
@@ -28,7 +32,7 @@
         </div>
         <div class="link_on_reg">
             <small>
-                <a href="{% url 'register' %}">Нужен аккаунт?</a>
+                <a href="{% url 'register' %}">Создать аккаунт</a>
             </small>
         </div>
         </form>

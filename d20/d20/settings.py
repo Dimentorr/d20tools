@@ -82,6 +82,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
+FILE_UPLOAD_MAX_MEMORY_SIZE = 26214400
 
 AUTH_PASSWORD_VALIDATORS = [
     {

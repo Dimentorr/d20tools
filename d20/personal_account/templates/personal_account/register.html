@@ -13,6 +13,13 @@
 {% endblock %}
 
 {% block main_content %}
+
+
+<ul>
+    {% for i in errors %}
+    <li>{{ i }}</li>
+    {% endfor%}
+</ul>
 <div>
     <form method="post" class="reg_block">
         {% csrf_token %}

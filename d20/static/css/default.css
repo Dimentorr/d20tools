@@ -5,8 +5,13 @@ body {
     font-size: var(--default-font-size);
 }
 
+.errors {
+    font-size: var(--font-size-error-forms);
+}
 .margin_top_for_all_center_content {
     margin-top: 10vh;
+    display: grid;
+    justify-items: center;
 }
 
 .content {

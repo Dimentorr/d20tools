@@ -18,20 +18,20 @@
         </div>
         <a class="cart_logo_character" href="{% url 'character_list' i.id %}">
             {% if i.logo %}
-                <img src="{% static '../media/' %}{{i.logo}}" alt="Изображение персонажа">
+                <img src="/media/{{i.logo}}" alt="Изображение персонажа" class="img_logo">
             {% else %}
-                <img src="{% static 'img/void_account.jpg' %}" alt="Изображение персонажа">
+                <img src="{% static 'img/void_account.jpg' %}" alt="Изображение персонажа" class="img_logo">
             {% endif %}
         </a>
     </div>
     {% endfor%}
     <div class="cart_person_on_menu">
         <a class="cart_logo_character" href="{% url 'new_character' %}">
-            <img src="{% static 'img/add.svg' %}" alt="Изображение персонажа">
+            <img src="{% static 'img/add.svg' %}" alt="Изображение персонажа" class="img_logo">
         </a>
     </div>
 </div>
-
+{% endblock %}
 {% block right_content %}
 
 {% endblock %}

@@ -4,6 +4,24 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.contrib.auth.decorators import login_required
 from transliterate import translit
 
+import os
+from io import BytesIO
+from PIL import Image
+from django.core.files import File
+
+
+def compress(image):
+    img = Image.open(image)
+    # create a BytesIO object
+    img_io = BytesIO()
+    # save image to BytesIO object
+    img.save(img_io, 'JPEG', quality=60)
+    # create a django-friendly Files object
+    file_name, old_extension = os.path.splitext(image.name)
+    name_file = file_name + '.jpeg'
+    new_image = File(img_io, name=name_file)
+    return new_image
+
 
 def rename(name):
     name = name.replace(' ', '')
@@ -11,15 +29,9 @@ def rename(name):
 
 
 def save_media(request, object_model):
-    print('============================')
-    print(request.FILES)
-    print('============================')
     if 'logo' in request.FILES:
-        logo_file = request.FILES['logo']
+        logo_file = compress(request.FILES['logo'])
         object_model.logo.save(rename(logo_file.name), logo_file)
-        print('============================')
-        print(request.FILES)
-        print('============================')
 
 
 @login_required(login_url='/account/login/')
