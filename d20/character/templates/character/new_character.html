@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block new_imports %}
-<link rel="stylesheet" href="{% static 'css/characters_menu.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/new_character.css' %}"/>
 {% endblock %}
 
 {% block title %}
@@ -10,9 +10,26 @@
 {% endblock %}
 
 {% block main_content %}
-Создание в разработке
+<ul>
+    {% for i in errors %}
+        <li class="errors">{{ i }}</li>
+    {% endfor %}
+</ul>
+<form method="post" enctype="multipart/form-data" class="form_create_characters">
+    {% csrf_token %}
+    <div id="image-form" class="new_character_card">
+        <input name="character_name" type="text" class="character_name">
+        <input type="file" id="image-upload" accept="image/*" class="button_for_img" name="logo">
+        <img id="image-preview" src="{% static 'img/void_account.jpg' %}" class="logo_character">
+    </div>
+    <input type="submit" name="Create" value="Создать" class="create_character_submit">
+</form>
 {% endblock %}
 
 {% block right_content %}
 
+{% endblock %}
+
+{% block js_imports %}
+<script src="{% static 'js/preview_img.js' %}"></script>
 {% endblock %}

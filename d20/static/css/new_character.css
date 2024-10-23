@@ -1,0 +1,54 @@
+.form_create_characters {
+    display: grid;
+    justify-items: center;
+}
+
+.new_character_card {
+    margin-bottom: 2vw;
+    border-radius: 10px;
+    background-color: var(--bg-block-on-form);
+    min-height: 250px;
+    height: 30vw;
+    max-height: 350px;
+    min-width: 180px;
+    width: 19vw;
+    max-width: 250px;
+
+    display: grid;
+    justify-items: center;
+    grid-template-rows: 35px 25px auto;
+    & * {
+        margin: 1%;
+        width: 95%;
+    }
+}
+.character_name {
+    border-radius: 20px;
+    grid-row-start: 1;
+    font-size: var(--font-size-for-card-on-menu-character);
+    text-align: center;
+}
+.button_for_img {
+    grid-row-start: 2;
+}
+.logo_character {
+    grid-row-start: 3;
+    height: 95%;
+    object-fit: cover;
+}
+
+.create_character_submit {
+    width: 50%;
+    height: 5vw;
+    min-height: 30px;
+    max-height: 40px;
+
+    border-radius: 25px;
+    background-color: var(--bg-button-access);
+    font-size: var(--name-buttons-on-form);
+}
+
+.errors{
+    font-size: var(--font-size-for-errors-message-for-user);
+    color: var(--color-errors-messages);
+}

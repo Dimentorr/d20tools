@@ -6,7 +6,7 @@ from rules import models as models_rules
 class Character(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
-    logo = models.ImageField(upload_to='characters/', null=True, blank=True)
+    logo = models.ImageField(upload_to='characters/')
 
     def __str__(self):
         return self.name

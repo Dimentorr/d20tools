@@ -6,6 +6,8 @@
     --bg-block-on-form: #5B85AA;
     --bg-button-access: rgb(30, 143, 4);
     --bg-button-access-hover: rgb(47, 255, 0);
+    --color-errors-messages: rgb(223, 187, 38);
+    --bg-button-dungerous: rgb(255, 0, 0);
 
     --linck-color-form: rgba(105, 232, 218, 0.89);
     --linck-color-hover-form: rgba(213, 227, 225, 0.89);
@@ -22,6 +24,8 @@
     --font-size-navbar: 1.8vw;
     --font-size-for-form-button: 1vw;
     --name-project-navbar: 2.5vw;
+    --name-buttons-on-form: 2vh;
+    --font-size-for-errors-message-for-user: 20px;
     --font-size-for-card-on-menu-character: 28px;
     --font-size-for-card-on-menu-character-small: 20px;
 

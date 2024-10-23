@@ -63,6 +63,7 @@ body {
     padding-left: 2vw;
     text-decoration: none;
     color: var(--text-color);
+    z-index: 9999;
     & img {
         width: var(--size-img-on-header);
         height: var(--size-img-on-header);

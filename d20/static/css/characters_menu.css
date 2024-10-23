@@ -18,6 +18,10 @@
 
     display: grid;
     grid-template-rows: 35px auto;
+    &:hover {
+        scale: 1.02;
+        transform: translateY(-1vw);
+    }
 }
 
 .carat_information_character {
@@ -50,5 +54,6 @@
         max-width: 220px;
         min-height: 210px;
         max-height: 270px;
+        object-fit: cover;
     }
 }

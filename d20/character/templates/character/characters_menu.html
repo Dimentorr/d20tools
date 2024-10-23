@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block main_content %}
+{% if user.is_authenticated %}
 <div class="place_for-cart_characters">
     {% for i in characters %}
     <div class="cart_person_on_menu">
@@ -18,7 +19,7 @@
         </div>
         <a class="cart_logo_character" href="{% url 'character_list' i.id %}">
             {% if i.logo %}
-                <img src="../media/{{i.logo}}" alt="Изображение персонажа">
+                <img src="{% static '../media/' %}{{i.logo}}" alt="Изображение персонажа">
             {% else %}
                 <img src="{% static 'img/void_account.jpg' %}" alt="Изображение персонажа">
             {% endif %}
@@ -31,6 +32,9 @@
         </a>
     </div>
 </div>
+{% else %}
+    <b>Для этого тебе нужно быть авторизованным!</b>
+{% endif %}
 {% endblock %}
 
 {% block right_content %}

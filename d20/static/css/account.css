@@ -203,6 +203,9 @@
         font-size: var(--default-font-size-account-form);
         color: var(--text-color-on-block-on-form);
         text-decoration: none;
+        &:hover {
+            scale: 0.95;
+        }
     }
 }
 

@@ -10,7 +10,13 @@
 {% endblock %}
 
 {% block main_content %}
-Лист персонажа - {{ character.name }}
+{% if user.is_authenticated %}
+    <div>
+        Лист персонажа - {{ character.name }}
+    </div>
+{% else %}
+    <b>Для этого тебе нужно быть авторизованным!</b>
+{% endif %}
 {% endblock %}
 
 {% block right_content %}
