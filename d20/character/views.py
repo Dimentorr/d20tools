@@ -32,6 +32,8 @@ def save_media(request, object_model):
     if 'logo' in request.FILES:
         logo_file = compress(request.FILES['logo'])
         object_model.logo.save(rename(logo_file.name), logo_file)
+    else:
+        object_model.logo = 'characters/default.jpg'
 
 
 @login_required(login_url='/account/login/')
@@ -69,7 +71,7 @@ def new_character(request):
 
             save_media(request, character)
 
-            # character.save()
+            character.save()
             return redirect('character_list', character.id)
 
     context['errors'] = errors
