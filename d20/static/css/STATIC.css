@@ -2,6 +2,7 @@
     --dg-color: #171123;
     --bg-form-on-body-color: #414770;
 
+    --bg-for-character-list: #4B5F86;
     --dg-form: rgba(55, 34, 72, 0.42);
     --bg-block-on-form: #5B85AA;
     --bg-button-access: rgb(30, 143, 4);
@@ -30,10 +31,24 @@
     --font-size-for-card-on-menu-character: 28px;
     --font-size-for-card-on-menu-character-small: 20px;
 
+    --height-cart-person: 30vw;
+    --max-height-cart-person: 350px;
+    --min-height-cart-person: 250px;
+    --max-height-cart-person-logo-on-list: 350px;
+    --min-height-cart-person-logo-on-list: 150px;
+
+    --width-cart-person: 19vw;
+    --max-width-cart-person: 250px;
+    --min-width-cart-person: 180px;
+    --max-width-cart-person-logo-on-list: 250px;
+    --min-width-cart-person-logo-on-list: 110px;
 
     --default-font-size-account-form: 20px;
     --default-font-size-account-username-on-form: 35px;
     --default-font-size-account-user-id-on-form: 15px;
+
+    --min-height-input-list-character: 15px;
+    --max-height-input-list-character: 35px;
 
     --default-font-size-account-username-on-form-befor-900: 20px;
     --default-font-size-account-user-id-on-form-befor-900: 8px;

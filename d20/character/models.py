@@ -19,11 +19,11 @@ class Character(models.Model):
 class CharactersList(models.Model):
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
     # main information
-    class_character = models.ForeignKey(models_rules.Classes, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True)
-    race = models.ForeignKey(models_rules.Race, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True)
-    background = models.CharField(max_length=50)
+    class_character = models.ForeignKey(models_rules.Classes, on_delete=models.SET_DEFAULT, default='', blank=True)
+    race = models.ForeignKey(models_rules.Race, on_delete=models.SET_DEFAULT, default='', blank=True)
+    background = models.CharField(max_length=50, default='', blank=True)
     exp = models.IntegerField(default=0)
-    lvl = models.IntegerField(default=0)
+    lvl = models.IntegerField(default=1)
     # description
     #TODO
     # как сделать хранение списка предметов, у каждого из которого в идеале должны быть свойства
@@ -32,9 +32,9 @@ class CharactersList(models.Model):
     # attachments =
     # weaknesses =
     # battle stats =
-    class_defense = models.IntegerField(default=0)
+    class_defense = models.IntegerField(default=10)
     initiative = models.IntegerField(default=0)
-    speed = models.IntegerField(default=0)
+    speed = models.IntegerField(default=30)
     max_hits = models.IntegerField(default=0)
     now_hits = models.IntegerField(default=0)
     temp_hits = models.IntegerField(default=0)
@@ -48,12 +48,12 @@ class CharactersList(models.Model):
     wisdom = models.IntegerField(default=10)
     charisma = models.IntegerField(default=10)
     # saving throws
-    strength_saving = models.BooleanField(default=0)
-    dexterity_saving = models.BooleanField(default=0)
-    constitution_saving = models.BooleanField(default=0)
-    intelligence_saving = models.BooleanField(default=0)
-    wisdom_saving = models.BooleanField(default=0)
-    charisma_saving = models.BooleanField(default=0)
+    strength_saving = models.BooleanField(default=False)
+    dexterity_saving = models.BooleanField(default=False)
+    constitution_saving = models.BooleanField(default=False)
+    intelligence_saving = models.BooleanField(default=False)
+    wisdom_saving = models.BooleanField(default=False)
+    charisma_saving = models.BooleanField(default=False)
     # saving throws death
     death_failed = models.IntegerField(default=0)
     death_succeeded = models.IntegerField(default=0)

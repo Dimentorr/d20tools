@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Character, CharactersList
+from rules.models import Classes, Race
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.contrib.auth.decorators import login_required
 from transliterate import translit
@@ -8,6 +9,25 @@ import os
 from io import BytesIO
 from PIL import Image
 from django.core.files import File
+
+
+class Stats:
+    strength = {'Сила': ['Атлетика']}
+    dexterity = {'Ловкость': ['Акробатика', 'Ловкость рук', 'Скрытность']}
+    constitution = {'Телосложение': []}
+    intelligence = {'Интелект': ['Анализ', 'История', 'Магия', 'Природа', 'Религия']}
+    wisdom = {'Мудрость': ['Восприятие', 'Выживание', 'Медицина', 'Проницательность', 'Уход за животными']}
+    charisma = {'Харизма': ['Выступление', 'Запугивание', 'Обман', 'Убеждение']}
+
+
+stats = [
+    ['strength', 'Сила', ['Атлетика']],
+    ['dexterity', 'Ловкость', ['Акробатика', 'Ловкость рук', 'Скрытность']],
+    ['constitution', 'Телосложение', []],
+    ['intelligence', 'Интелект', ['Анализ', 'История', 'Магия', 'Природа', 'Религия']],
+    ['wisdom', 'Мудрость', ['Восприятие', 'Выживание', 'Медицина', 'Проницательность', 'Уход за животными']],
+    ['charisma', 'Харизма', ['Выступление', 'Запугивание', 'Обман', 'Убеждение']]
+]
 
 
 def compress(image):
@@ -47,9 +67,15 @@ def character_menu(request):
 @login_required(login_url='/account/login/')
 def character_list(request, id):
     character = Character.objects.filter(owner=request.user).get(pk=id)
-    context = {'character': character, }
-    if character_list := CharactersList.objects.filter(character=character):
-        context['character_list'] = character_list
+    races = Race.objects.all()
+    classes = Classes.objects.all()
+    list_character = CharactersList.objects.get(character=character)
+    context = {'character': character,
+               'stats': stats,
+               # 'skills': skills,
+               'list_character': list_character,
+               'races': races,
+               'classes': classes,}
     return render(request, 'character/character_list.html', context)
 
 
@@ -72,6 +98,8 @@ def new_character(request):
             save_media(request, character)
 
             character.save()
+
+            CharactersList(character=character).save()
             return redirect('character_list', character.id)
 
     context['errors'] = errors

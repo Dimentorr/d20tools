@@ -16,7 +16,7 @@ body {
 
 .content {
     display: grid;
-    grid-template-columns: 18vw 62vw 20vw;
+    grid-template-columns: 18vw 65vw 16vw;
     grid-template-rows: auto auto;
 }
 

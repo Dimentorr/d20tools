@@ -1,0 +1,87 @@
+.character_form {
+    border-radius: 15px;
+    width: 65vw;
+    min-width: 310px;
+    background-color: var(--bg-for-character-list);
+
+    display: grid;
+    grid-template-rows: auto auto;
+}
+.person_information_about_character {
+    display: grid;
+    grid-template-columns: 40% auto;
+    & img {
+        margin: 5px;
+        border-radius: 15px;
+        grid-column-start: 1;
+        height: var(--height-cart-person);
+        max-height: var(--max-height-cart-person-logo-on-list);
+        min-height: var(--min-height-cart-person-logo-on-list);
+
+        max-width: var(--max-width-cart-person-logo-on-list);
+        min-width: var(--min-width-cart-person-logo-on-list);
+        width: var(--width-cart-person);
+        object-fit: cover;
+    }
+    & .information {
+        height: 10vw;
+        margin: 5px;
+        grid-column-start: 2;
+        display: grid;
+        & b {
+            min-height: var(--min-height-input-list-character);
+            max-height: var(--max-height-input-list-character);
+            height: 2vw;
+            display: flex;
+            & * {
+                border: none;
+                border-radius: 5px;
+                background-color: var(--bg-for-character-list);
+                color: var(--text-color);
+                font-size: var(--default-font-size);
+                text-align: center;
+            }
+        }
+    }
+}
+.name_character {
+    width: 10vw;
+}
+.lvl_character {
+    width: 5vw;
+}
+.exp_character {
+    width: 10vw;
+}
+.size_select {
+    min-height: var(--min-height-input-list-character);
+    max-height: var(--max-height-input-list-character);
+    height: 2vw;
+    width: 13vw;
+}
+#header_list {
+    grid-row-start: 1;
+}
+#main_list {
+    grid-row-start: 2;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.line {
+    height: 1px;
+    width: 100%;
+    background-color: var(--dg-color);
+    margin: auto;
+}
+.state {
+    text-transform: uppercase;
+    color: var(--linck-color-form);
+    display: grid;
+    grid-template-columns: 35% auto 10%;
+}
+
+.test {
+
+}

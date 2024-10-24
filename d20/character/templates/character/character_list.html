@@ -1,8 +1,9 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load pool_extras %}
 
 {% block new_imports %}
-<link rel="stylesheet" href="{% static 'css/characters_menu.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/character_list.css' %}"/>
 {% endblock %}
 
 {% block title %}
@@ -10,8 +11,58 @@
 {% endblock %}
 
 {% block main_content %}
-    <div>
-        Лист персонажа - {{ character.name }}
+    <div class="character_form">
+        <div class="person_information_about_character" id="header_list">
+            <img src="/media/{{ character.logo }}">
+            <div class="information">
+                <b><input value="{{ character.name }}" type="text" name="name" class="name_character">
+                    - <input value="{{ list_character.lvl }}" type="number" max=20 min=1 name="lvl" class="lvl_character">уровень</b>
+                <b>Класс: <select class="size_select" id="class" name="class">
+                        {% for class in classes %}
+                    {{ list_character|_format }}
+                        {% if list_character.class == race %}
+                                <option value="{{ class }}" selected>
+                                {{ class }}
+                                </option>
+                            {% else %}
+                                <option value="{{ class }}">
+                                    {{ class }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                Раса: <select class="size_select" id="race" name="race">
+                        {% for race in races %}
+                        {% if list_character.race == race %}
+                                <option value="{{ race }}" selected>
+                                {{ race }}
+                                </option>
+                            {% else %}
+                                <option value="{{ race }}">
+                                    {{ race }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select></b>
+                <b>Опыт: <input value="{{ list_character.exp }}" type="number" min=0 max=900 name="exp" class="exp_character">/900</b>
+                <b>Предыстория: {{ character.background }}</b>
+                <b>Мировозрение: {{ character.background }}</b>
+            </div>
+        </div>
+        <div id="main_list">
+            <div>
+                {% for stat in stats %}
+                <a class="state">
+                    <div class="test">{{ stat|get_name_stats }}</div>
+                    <div class="line"></div>
+                    <div>{{ list_character|get_param_from_object_by_str:stat }}({{ list_character|get_param_from_stats:stat }})</div>
+                </a>
+                {% for skill in stat|get_name_skills %}
+                    <b>{{ skill }}({{ list_character|get_param_from_stats:stat }})</b><br>
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}
 

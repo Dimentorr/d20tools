@@ -7,12 +7,14 @@
 .cart_person_on_menu {
     border-radius: 10px;
     background-color: var(--bg-block-on-form);
-    min-height: 250px;
-    height: 30vw;
-    max-height: 350px;
-    min-width: 180px;
-    width: 19vw;
-    max-width: 250px;
+
+    height: var(--height-cart-person);
+    max-height: var(--max-height-cart-person);
+    min-height: var(--min-height-cart-person);
+
+    max-width: var(--max-width-cart-person);
+    min-width: var(--min-width-cart-person);
+    width: var(--width-cart-person);
 
     margin: 1vw;
 
