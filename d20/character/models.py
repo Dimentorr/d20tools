@@ -89,9 +89,9 @@ class CharactersList(models.Model):
         verbose_name_plural = 'Листы'
 
 
-def save_character_classes(character, classes):
+def create_classes_for_save(character, classes):
     """
-    Сохраняет классы персонажа в таблицу CharactersList.
+    Собирает классы персонажа в объекте таблицы CharactersList.
     Args:
         character (Character): Объект персонажа, которому нужно добавить классы.
         classes (list): Список классов (объекты Classes) для добавления.
@@ -102,7 +102,16 @@ def save_character_classes(character, classes):
     character_classes = [CharacterClass.objects.create(game_class=game_class, level=1) for game_class in classes]
 
     character_list.class_character.set(character_classes)
-    character_list.save()
+    return character_list
+
+def save_character_classes(character, classes):
+    """
+    Сохраняет классы персонажа в таблицу CharactersList.
+    Args:
+        character (Character): Объект персонажа, которому нужно добавить классы.
+        classes (list): Список классов (объекты Classes) для добавления.
+    """
+    create_classes_for_save(character, classes).save()
 
 
 def get_character_classes(character):
@@ -115,3 +124,7 @@ def get_character_classes(character):
     """
     character_list = CharactersList.objects.get(character=character)
     return character_list.class_character.all()
+
+
+def clear_character_classes(character_list):
+    return character_list.class_character.all().delete()

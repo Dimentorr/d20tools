@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Character, CharactersList
-from .models import save_character_classes, get_character_classes
+from .models import save_character_classes, get_character_classes, clear_character_classes
 from rules.models import Classes, Race
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.contrib.auth.decorators import login_required
@@ -10,15 +10,6 @@ import os
 from io import BytesIO
 from PIL import Image
 from django.core.files import File
-
-
-class Stats:
-    strength = {'Сила': ['Атлетика']}
-    dexterity = {'Ловкость': ['Акробатика', 'Ловкость рук', 'Скрытность']}
-    constitution = {'Телосложение': []}
-    intelligence = {'Интелект': ['Анализ', 'История', 'Магия', 'Природа', 'Религия']}
-    wisdom = {'Мудрость': ['Восприятие', 'Выживание', 'Медицина', 'Проницательность', 'Уход за животными']}
-    charisma = {'Харизма': ['Выступление', 'Запугивание', 'Обман', 'Убеждение']}
 
 
 stats = [
@@ -33,7 +24,6 @@ stats = [
 
 def compress(image):
     img = Image.open(image)
-    # create a BytesIO object
     img_io = BytesIO()
     # save image to BytesIO object
     img.save(img_io, 'JPEG', quality=60)
@@ -65,13 +55,43 @@ def character_menu(request):
     return render(request, 'character/characters_menu.html', context)
 
 
+def edit_character(request, character_list, character):
+    errors = []
+    print('Save')
+    print(request.POST)
+    # Если файл будет выбран, тогда 'logo' необходимо искать уже в FILES
+    if 'logo' not in request.POST: save_media(request, character)
+    if name := request.POST.get('name'): character.name = name
+    if lvl := request.POST.get('lvl') and int(request.POST.get('lvl')) > 0: character.lvl = int(lvl)
+    if classes := request.POST.getlist('class'):
+        clear_character_classes(character_list)
+        print(classes)
+        character_classes = [Classes.objects.get(pk=int(i)) for i in classes if i != '']
+        print(character_classes)
+        save_character_classes(character, character_classes)
+
+    print(errors)
+    # character.save()
+    # character_list.save()
+
+
 @login_required(login_url='/account/login/')
 def character_list(request, id):
     character = Character.objects.filter(owner=request.user).get(pk=id)
+    list_character = CharactersList.objects.get(character=character)
     races = Race.objects.all()
     classes = Classes.objects.all()
+
+    if request.method == 'POST':
+        if 'Back' in request.POST:
+            return redirect('character_menu')
+        elif 'Save' in request.POST:
+            edit_character(request,
+                           CharactersList.objects.get(character=character),
+                           character)
+            return redirect('character_list', character.pk)
+
     character_classes = get_character_classes(character)
-    list_character = CharactersList.objects.get(character=character)
     context = {'character': character,
                'stats': stats,
                # 'skills': skills,
@@ -101,7 +121,6 @@ def new_character(request):
             save_media(request, character)
 
             character.save()
-            # save_character_classes(character, Classes.objects.all())
             CharactersList(character=character).save()
             return redirect('character_list', character.id)
 

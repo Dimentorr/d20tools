@@ -23,37 +23,37 @@
                     <div>
                     {% for character_class in character_classes %}
                     <select class="size_select" name="class">
-                        <option value="" selected> </option>
+                        <option value="0" selected> </option>
                         {% for class in classes %}
                         {% if character_class.game_class == class %}
-                                <option value="{{ class }}" selected>
+                                <option value="{{ class.id }}" selected>
                                 {{ class }}
                                 </option>
                             {% else %}
-                                <option value="{{ class }}">
+                                <option value="{{ class.id }}">
                                     {{ class }}
                                 </option>
                             {% endif %}
                         {% endfor %}
                     </select>
-                        <input type="number" name="lvl_class_{{ character_class.game_class }}"
+                        <input type="number" name="lvl_class"
                                min="0" max="{{ list_character.lvl }}" value="{{ character_class.level }}"
                         class="lvl_character">
                     {% endfor %}
-                    </div>
                     {% if character_classes|get_length < classes|get_length %}
                     <select class="size_select" name="class">
                         <option value="" selected> </option>
                         {% for class in classes %}
-                        <option value="{{ class }}">
+                        <option value="{{ class.id }}">
                             {{ class }}
                         </option>
                         {% endfor %}
                     </select>
-                        <input type="number" name="lvl_class_new_class"
+                        <input type="number" name="lvl_class"
                                min="0" max="{{ list_character.lvl }}" value="1"
                         class="lvl_character">
                     {% endif %}
+                    </div>
                 </b>
                 <b class="main_character_info">Раса: <select class="size_select" id="race" name="race">
                         {% for race in races %}
@@ -78,7 +78,7 @@
             <div>
                 {% for stat in stats %}
                 <a class="state">
-                    <div class="test">{{ stat|get_name_stats }}</div>
+                    <div>{{ stat|get_name_stats }}</div>
                     <div class="line"></div>
                     <div>{{ list_character|get_param_from_object_by_str:stat }}({{ list_character|get_param_from_stats:stat }})</div>
                 </a>
