@@ -23,7 +23,7 @@
                     <div>
                     {% for character_class in character_classes %}
                     <select class="size_select" name="class">
-                        <option value="0" selected> </option>
+                        <option value="" selected> </option>
                         {% for class in classes %}
                         {% if character_class.game_class == class %}
                                 <option value="{{ class.id }}" selected>

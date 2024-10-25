@@ -89,7 +89,7 @@ class CharactersList(models.Model):
         verbose_name_plural = 'Листы'
 
 
-def create_classes_for_save(character, classes):
+def create_classes_for_save(character, classes, lvl_classes):
     """
     Собирает классы персонажа в объекте таблицы CharactersList.
     Args:
@@ -99,7 +99,10 @@ def create_classes_for_save(character, classes):
     character_list, created = CharactersList.objects.get_or_create(character=character)
 
     # Преобразование списка Classes в список CharacterClass
-    character_classes = [CharacterClass.objects.create(game_class=game_class, level=1) for game_class in classes]
+    character_classes = list()
+    for i in range(len(classes)):
+        if game_class := classes[i]:
+            character_classes.append(CharacterClass.objects.create(game_class=game_class, level=lvl_classes[i]))
 
     character_list.class_character.set(character_classes)
     return character_list

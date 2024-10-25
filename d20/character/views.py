@@ -1,6 +1,8 @@
+from django.db import transaction
+
 from django.shortcuts import render, redirect
 from .models import Character, CharactersList
-from .models import save_character_classes, get_character_classes, clear_character_classes
+from .models import save_character_classes, get_character_classes, clear_character_classes, create_classes_for_save
 from rules.models import Classes, Race
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.contrib.auth.decorators import login_required
@@ -55,24 +57,27 @@ def character_menu(request):
     return render(request, 'character/characters_menu.html', context)
 
 
+@transaction.atomic
 def edit_character(request, character_list, character):
     errors = []
     print('Save')
     print(request.POST)
-    # Если файл будет выбран, тогда 'logo' необходимо искать уже в FILES
-    if 'logo' not in request.POST: save_media(request, character)
-    if name := request.POST.get('name'): character.name = name
-    if lvl := request.POST.get('lvl') and int(request.POST.get('lvl')) > 0: character.lvl = int(lvl)
-    if classes := request.POST.getlist('class'):
-        clear_character_classes(character_list)
-        print(classes)
-        character_classes = [Classes.objects.get(pk=int(i)) for i in classes if i != '']
-        print(character_classes)
-        save_character_classes(character, character_classes)
+    try:
+        # Если файл будет выбран, тогда 'logo' необходимо искать уже в FILES
+        if 'logo' not in request.POST: save_media(request, character)
+        if name := request.POST.get('name'): character.name = name
+        if int(request.POST.get('lvl')) > 0: character_list.lvl = int(request.POST.get('lvl'))
+        if int(request.POST.get('exp')) > 0: character_list.exp = int(request.POST.get('exp'))
+        if classes := request.POST.getlist('class'):
+            character_classes = [Classes.objects.get(pk=int(i)) for i in classes if i != '']
+            print(create_classes_for_save(character, character_classes, request.POST.getlist('lvl_class')))
+            save_character_classes(character, character_classes)
+        character.save()
+        character_list.save()
+    except Exception as e:
+        return e
 
     print(errors)
-    # character.save()
-    # character_list.save()
 
 
 @login_required(login_url='/account/login/')
