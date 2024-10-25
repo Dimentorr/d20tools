@@ -11,16 +11,21 @@
 {% endblock %}
 
 {% block main_content %}
-    <div class="character_form">
+    <form method="post" enctype="multipart/form-data" class="character_form">
+        {% csrf_token %}
         <div class="person_information_about_character" id="header_list">
-            <img src="/media/{{ character.logo }}">
+            <img id="image-preview" src="/media/{{ character.logo }}">
+            <input type="file" id="image-upload" accept="image/*" name="logo">
             <div class="information">
                 <b><input value="{{ character.name }}" type="text" name="name" class="name_character">
                     - <input value="{{ list_character.lvl }}" type="number" max=20 min=1 name="lvl" class="lvl_character">уровень</b>
-                <b>Класс: <select class="size_select" id="class" name="class">
+                <b class="character_classes">Класс:
+                    <div>
+                    {% for character_class in character_classes %}
+                    <select class="size_select" name="class">
+                        <option value="" selected> </option>
                         {% for class in classes %}
-                    {{ list_character|_format }}
-                        {% if list_character.class == race %}
+                        {% if character_class.game_class == class %}
                                 <option value="{{ class }}" selected>
                                 {{ class }}
                                 </option>
@@ -31,7 +36,26 @@
                             {% endif %}
                         {% endfor %}
                     </select>
-                Раса: <select class="size_select" id="race" name="race">
+                        <input type="number" name="lvl_class_{{ character_class.game_class }}"
+                               min="0" max="{{ list_character.lvl }}" value="{{ character_class.level }}"
+                        class="lvl_character">
+                    {% endfor %}
+                    </div>
+                    {% if character_classes|get_length < classes|get_length %}
+                    <select class="size_select" name="class">
+                        <option value="" selected> </option>
+                        {% for class in classes %}
+                        <option value="{{ class }}">
+                            {{ class }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                        <input type="number" name="lvl_class_new_class"
+                               min="0" max="{{ list_character.lvl }}" value="1"
+                        class="lvl_character">
+                    {% endif %}
+                </b>
+                <b class="main_character_info">Раса: <select class="size_select" id="race" name="race">
                         {% for race in races %}
                         {% if list_character.race == race %}
                                 <option value="{{ race }}" selected>
@@ -43,10 +67,11 @@
                                 </option>
                             {% endif %}
                         {% endfor %}
-                    </select></b>
-                <b>Опыт: <input value="{{ list_character.exp }}" type="number" min=0 max=900 name="exp" class="exp_character">/900</b>
-                <b>Предыстория: {{ character.background }}</b>
-                <b>Мировозрение: {{ character.background }}</b>
+                    </select>
+                </b>
+                <b class="main_character_info">Опыт: <input value="{{ list_character.exp }}" type="number" min=0 max=900 name="exp" class="exp_character">/900</b>
+                <b class="main_character_info">Предыстория: {{ character.background }}</b>
+                <b class="main_character_info">Мировозрение: {{ character.background }}</b>
             </div>
         </div>
         <div id="main_list">
@@ -63,9 +88,18 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
+
+        <div class="submit_place">
+            <input type="submit" name="Save" value="Сохранить" class="submit" id="success">
+            <input type="submit" name="Back" value="Назад" class="submit" id="back">
+        </div>
+    </form>
 {% endblock %}
 
 {% block right_content %}
 
+{% endblock %}
+
+{% block js_imports %}
+<script src="{% static 'js/preview_img.js' %}"></script>
 {% endblock %}

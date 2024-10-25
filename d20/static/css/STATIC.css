@@ -35,13 +35,13 @@
     --max-height-cart-person: 350px;
     --min-height-cart-person: 250px;
     --max-height-cart-person-logo-on-list: 350px;
-    --min-height-cart-person-logo-on-list: 150px;
+    --min-height-cart-person-logo-on-list: 100px;
 
     --width-cart-person: 19vw;
     --max-width-cart-person: 250px;
     --min-width-cart-person: 180px;
     --max-width-cart-person-logo-on-list: 250px;
-    --min-width-cart-person-logo-on-list: 110px;
+    --min-width-cart-person-logo-on-list: 90px;
 
     --default-font-size-account-form: 20px;
     --default-font-size-account-username-on-form: 35px;

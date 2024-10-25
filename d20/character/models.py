@@ -16,12 +16,20 @@ class Character(models.Model):
         verbose_name_plural = 'Персонажи'
 
 
+class CharacterClass(models.Model):
+    game_class = models.ForeignKey(models_rules.Classes, on_delete=models.CASCADE)
+    level = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f'{self.game_class.name} - {self.level}'
+
+
 class CharactersList(models.Model):
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
     # main information
-    class_character = models.ForeignKey(models_rules.Classes, on_delete=models.SET_DEFAULT, default='', blank=True)
-    race = models.ForeignKey(models_rules.Race, on_delete=models.SET_DEFAULT, default='', blank=True)
-    background = models.CharField(max_length=50, default='', blank=True)
+    class_character = models.ManyToManyField(CharacterClass)
+    race = models.ForeignKey(models_rules.Race, on_delete=models.SET_DEFAULT, default='', null=True, blank=True)
+    background = models.CharField(max_length=50, default='', null=True, blank=True)
     exp = models.IntegerField(default=0)
     lvl = models.IntegerField(default=1)
     # description
@@ -79,3 +87,31 @@ class CharactersList(models.Model):
     class Meta:
         verbose_name = 'Лист'
         verbose_name_plural = 'Листы'
+
+
+def save_character_classes(character, classes):
+    """
+    Сохраняет классы персонажа в таблицу CharactersList.
+    Args:
+        character (Character): Объект персонажа, которому нужно добавить классы.
+        classes (list): Список классов (объекты Classes) для добавления.
+    """
+    character_list, created = CharactersList.objects.get_or_create(character=character)
+
+    # Преобразование списка Classes в список CharacterClass
+    character_classes = [CharacterClass.objects.create(game_class=game_class, level=1) for game_class in classes]
+
+    character_list.class_character.set(character_classes)
+    character_list.save()
+
+
+def get_character_classes(character):
+    """
+    Получает классы персонажа из таблицы CharactersList.
+    Args:
+        character (Character): Объект персонажа, у которого нужно получить классы.
+    Returns:
+        list: Список классов (объекты CharacterClass) персонажа.
+    """
+    character_list = CharactersList.objects.get(character=character)
+    return character_list.class_character.all()

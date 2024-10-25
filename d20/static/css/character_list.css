@@ -9,7 +9,7 @@
 }
 .person_information_about_character {
     display: grid;
-    grid-template-columns: 40% auto;
+    grid-template-columns: 30% auto;
     & img {
         margin: 5px;
         border-radius: 15px;
@@ -23,11 +23,20 @@
         width: var(--width-cart-person);
         object-fit: cover;
     }
+    & #image-upload {
+        grid-column-start: 1;
+        margin: 5px;
+        height: 2vw;
+        max-height: 40px;
+        max-width: 100px;
+    }
     & .information {
         height: 10vw;
         margin: 5px;
         grid-column-start: 2;
+        grid-row-start: 1;
         display: grid;
+        grid-template-columns: 25vw 20vw;
         & b {
             min-height: var(--min-height-input-list-character);
             max-height: var(--max-height-input-list-character);
@@ -44,20 +53,30 @@
         }
     }
 }
+.main_character_info {
+    grid-column-start: 1;
+}
+.character_classes {
+    grid-column-start: 2;
+    width: 20vw;
+    min-width: 100px;
+}
 .name_character {
     width: 10vw;
 }
 .lvl_character {
-    width: 5vw;
+    width: 3vw;
+    min-width: 20px;
 }
 .exp_character {
     width: 10vw;
+    min-width: 50px;
 }
 .size_select {
     min-height: var(--min-height-input-list-character);
     max-height: var(--max-height-input-list-character);
     height: 2vw;
-    width: 13vw;
+    width: 10vw;
 }
 #header_list {
     grid-row-start: 1;
@@ -82,6 +101,31 @@
     grid-template-columns: 35% auto 10%;
 }
 
-.test {
+.submit_place {
+    display: flex;
+    justify-content: center;
 
+    & .submit {
+        border: none;
+        margin: 5px;
+
+        max-width: var(--max-width-cart-person-logo-on-list);
+        min-width: var(--min-width-cart-person-logo-on-list);
+        width: var(--width-cart-person);
+
+        height: 5vw;
+        min-height: 30px;
+        max-height: 40px;
+        border-radius: 25px;
+        font-size: var(--name-buttons-on-form);
+        &:hover {
+            scale: var(--scale-min);
+        }
+    }
+    & #success {
+        background-color: var(--bg-button-access);
+    }
+    & #back {
+        background-color: var(--bg-button-dungerous);
+    }
 }

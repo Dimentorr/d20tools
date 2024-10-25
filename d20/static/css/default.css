@@ -16,7 +16,7 @@ body {
 
 .content {
     display: grid;
-    grid-template-columns: 18vw 65vw 16vw;
+    grid-template-columns: 10vw 80vw 10vw;
     grid-template-rows: auto auto;
 }
 
@@ -51,8 +51,6 @@ body {
     background-color: var(--bg-form-on-body-color);
     justify-content: space-between;
     border-radius: 20px;
-    /*height: 7vh;*/
-    /*display: flex;*/
 
     display: grid;
     grid-template-columns: 25% 65% 10%;

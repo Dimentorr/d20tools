@@ -25,6 +25,11 @@ def get_param_from_stats(obj, name):
 
 
 @register.filter
+def get_length(value):
+    return len(value)
+
+
+@register.filter
 def _format(value):
     print(value)
 
@@ -33,4 +38,5 @@ register.simple_tag(get_name_skills)
 register.simple_tag(get_name_stats)
 register.simple_tag(get_param_from_object_by_str)
 register.simple_tag(get_param_from_stats)
+register.simple_tag(get_length)
 register.simple_tag(_format)

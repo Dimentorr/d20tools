@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Character, CharactersList
+from .models import save_character_classes, get_character_classes
 from rules.models import Classes, Race
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.contrib.auth.decorators import login_required
@@ -69,13 +70,15 @@ def character_list(request, id):
     character = Character.objects.filter(owner=request.user).get(pk=id)
     races = Race.objects.all()
     classes = Classes.objects.all()
+    character_classes = get_character_classes(character)
     list_character = CharactersList.objects.get(character=character)
     context = {'character': character,
                'stats': stats,
                # 'skills': skills,
                'list_character': list_character,
                'races': races,
-               'classes': classes,}
+               'classes': classes,
+               'character_classes': character_classes,}
     return render(request, 'character/character_list.html', context)
 
 
@@ -98,7 +101,7 @@ def new_character(request):
             save_media(request, character)
 
             character.save()
-
+            # save_character_classes(character, Classes.objects.all())
             CharactersList(character=character).save()
             return redirect('character_list', character.id)
 
