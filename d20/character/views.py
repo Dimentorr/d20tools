@@ -66,15 +66,16 @@ def edit_character(request, character_list, character):
         # Если файл будет выбран, тогда 'logo' необходимо искать уже в FILES
         if 'logo' not in request.POST: save_media(request, character)
         if name := request.POST.get('name'): character.name = name
+        print(request.POST.get('lvl'))
         if int(request.POST.get('lvl')) > 0: character_list.lvl = int(request.POST.get('lvl'))
         if int(request.POST.get('exp')) > 0: character_list.exp = int(request.POST.get('exp'))
         if classes := request.POST.getlist('class'):
             character_classes = [Classes.objects.get(pk=int(i)) for i in classes if i != '']
-            print(create_classes_for_save(character, character_classes, request.POST.getlist('lvl_class')))
-            save_character_classes(character, character_classes)
+            save_character_classes(character, character_classes, request.POST.getlist('lvl_class'))
         character.save()
         character_list.save()
     except Exception as e:
+        print(e)
         return e
 
     print(errors)
@@ -92,8 +93,8 @@ def character_list(request, id):
             return redirect('character_menu')
         elif 'Save' in request.POST:
             edit_character(request,
-                           CharactersList.objects.get(character=character),
-                           character)
+                           character_list=CharactersList.objects.get(character=character),
+                           character=character)
             return redirect('character_list', character.pk)
 
     character_classes = get_character_classes(character)

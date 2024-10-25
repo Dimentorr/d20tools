@@ -107,14 +107,14 @@ def create_classes_for_save(character, classes, lvl_classes):
     character_list.class_character.set(character_classes)
     return character_list
 
-def save_character_classes(character, classes):
+def save_character_classes(character, classes, lvl_classes):
     """
     Сохраняет классы персонажа в таблицу CharactersList.
     Args:
         character (Character): Объект персонажа, которому нужно добавить классы.
         classes (list): Список классов (объекты Classes) для добавления.
     """
-    create_classes_for_save(character, classes).save()
+    create_classes_for_save(character, classes, lvl_classes).save()
 
 
 def get_character_classes(character):
