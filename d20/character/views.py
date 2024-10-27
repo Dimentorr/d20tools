@@ -59,6 +59,15 @@ def character_menu(request):
 
 @transaction.atomic
 def edit_character(request, character_list, character):
+    """
+    Вносит изменения в таблицы Character, CharactersList.
+    Args:
+        request : данные после отправки со страницы form с method=POST
+        character_list (CharactersList): Объект листа персонажа.
+        character (Character): Объект персонажа.
+    Returns:
+        errors: Список ошибок, при сохранении данных.
+    """
     errors = []
     print('Save')
     print(request.POST)
@@ -66,7 +75,6 @@ def edit_character(request, character_list, character):
         # Если файл будет выбран, тогда 'logo' необходимо искать уже в FILES
         if 'logo' not in request.POST: save_media(request, character)
         if name := request.POST.get('name'): character.name = name
-        print(request.POST.get('lvl'))
         if int(request.POST.get('lvl')) > 0: character_list.lvl = int(request.POST.get('lvl'))
         if int(request.POST.get('exp')) > 0: character_list.exp = int(request.POST.get('exp'))
         if classes := request.POST.getlist('class'):
@@ -78,7 +86,7 @@ def edit_character(request, character_list, character):
         print(e)
         return e
 
-    print(errors)
+    return errors
 
 
 @login_required(login_url='/account/login/')

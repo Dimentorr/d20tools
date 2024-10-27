@@ -130,4 +130,9 @@ def get_character_classes(character):
 
 
 def clear_character_classes(character_list):
+    """
+        Очищает классы персонажа из таблицы CharactersList.
+        Args:
+            character_list (CharactersList): Объект листа персонажа, у которого нужно очистить классы.
+    """
     return character_list.class_character.all().delete()

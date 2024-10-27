@@ -27,8 +27,8 @@
         grid-column-start: 1;
         margin: 5px;
         height: 2vw;
-        max-height: 40px;
-        max-width: 100px;
+        min-height: 15px;
+        max-width: 120px;
     }
     & .information {
         height: 10vw;
@@ -41,7 +41,6 @@
             min-height: var(--min-height-input-list-character);
             max-height: var(--max-height-input-list-character);
             height: 2vw;
-            display: flex;
             & * {
                 border: none;
                 border-radius: 5px;
@@ -58,6 +57,7 @@
 }
 .character_classes {
     grid-column-start: 2;
+    display: grid;
     width: 20vw;
     min-width: 100px;
 }

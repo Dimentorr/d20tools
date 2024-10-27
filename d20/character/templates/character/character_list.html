@@ -18,8 +18,8 @@
             <input type="file" id="image-upload" accept="image/*" name="logo">
             <div class="information">
                 <b><input value="{{ character.name }}" type="text" name="name" class="name_character">
-                    - <input value="{{ list_character.lvl }}" type="number" max=20 min=1 name="lvl" class="lvl_character">уровень</b>
-                <b class="character_classes">Класс:
+                    - <input value="{{ list_character.lvl }}" id="character_lvl" type="number" max=20 min=1 name="lvl" class="lvl_character">уровень</b>
+                <b class="character_classes"><div>Классы:</div>
                     <div>
                     {% for character_class in character_classes %}
                     <select class="size_select" name="class">
@@ -102,4 +102,5 @@
 
 {% block js_imports %}
 <script src="{% static 'js/preview_img.js' %}"></script>
+<script src="{% static 'js/correct_max_value.js' %}"></script>
 {% endblock %}
