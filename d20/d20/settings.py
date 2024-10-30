@@ -22,7 +22,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRETKEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['d20tools.ru', '45.141.103.15', 'localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['d20tools.ru', 'localhost', '127.0.0.1', '0.0.0.0']
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
